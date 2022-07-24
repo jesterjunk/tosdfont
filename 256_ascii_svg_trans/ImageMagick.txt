@@ -1,0 +1,91 @@
+magick mogrify              -background none -path ../256_ascii_bmp_trans/x1 -format bmp *.svg
+magick mogrify -density 192 -background none -path ../256_ascii_bmp_trans/x2 -format bmp *.svg
+magick mogrify -density 288 -background none -path ../256_ascii_bmp_trans/x3 -format bmp *.svg
+magick mogrify -density 384 -background none -path ../256_ascii_bmp_trans/x4 -format bmp *.svg
+
+
+magick mogrify              -background none -path ../256_ascii_bmp_trans/x1 -format bmp *.svg
+magick mogrify -density 192 -background none -path ../256_ascii_bmp_trans/x2 -format bmp *.svg
+magick mogrify -density 288 -background none -path ../256_ascii_bmp_trans/x3 -format bmp *.svg
+magick mogrify -density 384 -background none -path ../256_ascii_bmp_trans/x4 -format bmp *.svg
+
+
+
+-density 96  = x1    default
+-density 192 = x2
+-density 288 = x3
+-density 384 = x4
+
+
+python
+
+for i in range(1, 11 + 1):
+    w = i * 8
+    h = i * 16
+    print(f"x{i}    {w}×{h}")
+
+Output:
+
+         size
+scale    per
+         char
+
+x1        8x16
+x2       16x32
+x3       24x48
+x4       32x64
+x5       40x80
+x6       48x96
+x7       56x112
+x8       64x128
+x9       72x144
+x10      80x160
+x11      88x176
+
+
+
+python for pngs
+
+for i in range(1, 11 + 1):
+    w = i * 8
+    d = i * 96
+    print(f"magick montage -density {d} -geometry {w}x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x{i}.png")
+
+
+output:
+
+magick montage -density 96 -geometry 8x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x1.png
+magick montage -density 192 -geometry 16x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x2.png
+magick montage -density 288 -geometry 24x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x3.png
+magick montage -density 384 -geometry 32x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x4.png
+magick montage -density 480 -geometry 40x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x5.png
+magick montage -density 576 -geometry 48x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x6.png
+magick montage -density 672 -geometry 56x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x7.png
+magick montage -density 768 -geometry 64x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x8.png
+magick montage -density 864 -geometry 72x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x9.png
+magick montage -density 960 -geometry 80x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x10.png
+magick montage -density 1056 -geometry 88x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/png/x11.png
+
+
+
+python for bmps
+
+for i in range(1, 11 + 1):
+    w = i * 8
+    d = i * 96
+    print(f"magick montage -density {d} -geometry {w}x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x{i}.bmp")
+
+
+output:
+
+magick montage -density 96 -geometry 8x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x1.bmp
+magick montage -density 192 -geometry 16x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x2.bmp
+magick montage -density 288 -geometry 24x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x3.bmp
+magick montage -density 384 -geometry 32x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x4.bmp
+magick montage -density 480 -geometry 40x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x5.bmp
+magick montage -density 576 -geometry 48x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x6.bmp
+magick montage -density 672 -geometry 56x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x7.bmp
+magick montage -density 768 -geometry 64x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x8.bmp
+magick montage -density 864 -geometry 72x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x9.bmp
+magick montage -density 960 -geometry 80x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x10.bmp
+magick montage -density 1056 -geometry 88x+1+1  -tile 16x16 -background none *.svg ../256_ascii_trans_montages/bmp/x11.bmp
